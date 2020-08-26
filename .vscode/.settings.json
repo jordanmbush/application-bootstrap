@@ -13,9 +13,7 @@
   "[less]": {
     "editor.formatOnSave": true
   },
-  "editor.rulers": [
-    100
-  ],
+  "editor.rulers": [100],
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
@@ -23,36 +21,8 @@
   "files.trimTrailingWhitespace": true,
   "stylelint.autoFixOnSave": true,
   "html.format.enable": false,
-  "jest.pathToJest": "./node_modules/jest/bin/jest.js",
-  "jest.pathToConfig": "./package.json",
-  "path-autocomplete.pathMappings": {
-    "@app": "${workspace}/httpd/react/src/app",
-    "@assets": "${workspace}/httpd/src/main/webapp/assets",
-    "@atoms": "${workspace}/httpd/react/src/components/atoms",
-    "@constants": "${workspace}/httpd/react/src/constants",
-    "@data": "${workspace}/httpd/react/src/data",
-    "@forms": "${workspace}/httpd/react/src/components/atoms/forms",
-    "@images": "${workspace}/httpd/src/main/webapp/images",
-    "@knobs": "${workspace}/httpd/react/src/components/knobs",
-    "@mixins": "${workspace}/httpd/react/src/mixins",
-    "@molecules": "${workspace}/httpd/react/src/components/molecules",
-    "@organisms": "${workspace}/httpd/react/src/components/organisms",
-    "@redux": "${workspace}/httpd/react/src/redux",
-    "@services": "${workspace}/httpd/react/src/services",
-    "@so": "${workspace}/httpd/react/src/app/site-op",
-    "@styles": "${workspace}/httpd/react/src/styles",
-    "@test": "${workspace}/httpd/react/src/test",
-    "@utilities": "${workspace}/httpd/react/src/utilities"
-  },
   "search.exclude": {
-    "**/.storybook": true,
-    "**/binaries": true,
-    "**/bower_components": true,
-    "**/coverage": true,
     "**/node_modules": true,
-    "**/target": true,
-    "package-lock.json": true,
-    "yarn-error.log": true,
-    "yarn.lock": true
+    "package-lock.json": true
   }
 }
