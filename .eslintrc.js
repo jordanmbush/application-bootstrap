@@ -1,16 +1,28 @@
+// If your vscode has multiple formatters, you may have to tell vscode to use prettier
 module.exports = {
   // https://standardjs.com/rules.html#javascript-standard-style
   extends: ['standard', 'standard-jsx'],
-  overrides: [
-    {
-      files: '*.specs.js',
-      rules: {
-        // Due to sinon-chai issue
-        // https://github.com/domenic/sinon-chai/issues/20
-        'no-unused-expressions': 'off',
-      },
-    },
-  ],
+
+  globals: {
+    // app globals
+    React: 'writable',
+    document: 'writable',
+    fetch: 'writable',
+
+    window: 'writable',
+    // Test globals
+    after: 'readonly',
+    afterAll: 'readonly',
+    afterEach: 'readonly',
+    before: 'readonly',
+    beforeEach: 'readonly',
+    describe: 'readonly',
+    expect: 'readonly',
+    it: 'readonly',
+    jest: 'readonly',
+    test: 'readonly',
+  },
+
   parser: 'babel-eslint',
   parserOptions: {
     ecmaFeatures: {
@@ -20,64 +32,9 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  plugins: ['import', 'jsx-a11y', 'react'],
-  settings: {
-    react: {
-      createClass: 'createReactClass', // Regex for Component Factory to use,
-      // default to "createReactClass"
-      pragma: 'React', // Pragma to use, default to "React"
-      version: 'detect', // React version. "detect" automatically picks the version you have installed.
-      // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
-      // default to latest and warns if missing
-      // It will default to "detect" in the future
-      flowVersion: '0.53', // Flow version
-    },
-    propWrapperFunctions: [
-      // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
-      'forbidExtraProps',
-      {property: 'freeze', object: 'Object'},
-      {property: 'myFavoriteWrapper'},
-    ],
-    linkComponents: [
-      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-      'Hyperlink',
-      {name: 'Link', linkAttribute: 'to'},
-    ],
-  },
-  globals: {
-    // app globals
-    $: true,
-    Headers: true,
-    IS_DEVELOPMENT: true,
-    Image: true,
-    Microsoft: true,
-    React: true,
-    angular: true,
-    document: true,
-    elink: true,
-    featureFlags: false,
-    fetch: true,
-    s: true,
-    siteConfig: true,
-    strings: false,
-    valuesData: true,
 
-    window: true,
-    // specs globals
-    after: false,
-    afterAll: false,
-    afterEach: false,
-    assert: false,
-    before: false,
-    beforeEach: false,
-    chai: false,
-    describe: false,
-    expect: false,
-    it: false,
-    jest: false,
-    sinon: false,
-    test: false,
-  },
+  plugins: ['import', 'jsx-a11y', 'react'],
+
   rules: {
     'array-bracket-spacing': 'error',
     'array-callback-return': 'error',
@@ -151,6 +108,7 @@ module.exports = {
       },
     ],
     'no-var': 'error',
+    'object-curly-spacing': ['error', 'never'],
     'object-property-newline': 'error',
     'object-shorthand': 'error',
     'operator-linebreak': ['error', 'after', {overrides: {'?': 'before', ':': 'before'}}],
@@ -204,7 +162,10 @@ module.exports = {
       },
     ],
     'space-before-blocks': 'error',
-    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-paren': [
+      'error',
+      {anonymous: 'never', asyncArrow: 'always', named: 'never'},
+    ],
     'space-in-parens': 'error',
     'spaced-comment': 'error',
     'standard/computed-property-even-spacing': 'off',
@@ -216,6 +177,30 @@ module.exports = {
         requireReturn: false,
         requireReturnDescription: false,
       },
+    ],
+  },
+
+  settings: {
+    react: {
+      createClass: 'createReactClass', // Regex for Component Factory to use,
+      // default to "createReactClass"
+      pragma: 'React', // Pragma to use, default to "React"
+      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+      // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+      // default to latest and warns if missing
+      // It will default to "detect" in the future
+      flowVersion: '0.53', // Flow version
+    },
+    propWrapperFunctions: [
+      // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+      'forbidExtraProps',
+      {property: 'freeze', object: 'Object'},
+      {property: 'myFavoriteWrapper'},
+    ],
+    linkComponents: [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      'Hyperlink',
+      {name: 'Link', linkAttribute: 'to'},
     ],
   },
 };
